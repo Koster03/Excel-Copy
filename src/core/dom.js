@@ -24,8 +24,30 @@ class Dom {
     this.$el.addEventListener(eventType, calback);
   }
 
+  get data() {
+    return this.$el.dataset;
+  }
+
+  css(styles = {}) {
+    Object.keys(styles).forEach((key) => {
+      this.$el.style[key] = styles[key];
+    });
+  }
+
+  findAll(selector) {
+    return this.$el.querySelectorAll(selector);
+  }
+
   off(eventType, calback) {
     this.$el.removeEventListener(eventType, calback);
+  }
+
+  getCoords() {
+    return this.$el.getBoundingClientRect();
+  }
+
+  closest(selector) {
+    return $(this.$el.closest(selector));
   }
 
   append(node) {
